@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <h1> Greendata </h1>
+    <p class="lead">
+        greenData is a website that presents and allows data analysis of greenhouse gas and population data
+    </p>
+
+</div>
+<div class="row">
+    <div class="col-sm-4 jumbotron">
+        <h2>
+            about us
+        </h2>
+        <p>
+            we are a website that allows data analysis to greenhouse gas and population count through the python pandas library. to learn more click enter our about page
+        </p>
+       <a href="{{ url_for('about') }}" class="btn btn-primary btn-lg"> to about</a>
+    </div>
+    <div class="col-sm-4 jumbotron col-md-offset-1">
+
+
+        <h2>
+            register
+        </h2>
+        <p>
+            to use our data you must register and than login to do that click on the registartion in the menu or on the button below
+        </p>
+        <a href="{{ url_for('Register') }}" class="btn btn-primary btn-lg"> to register page</a>
+    </div>
+    <div class="col-sm-4 jumbotron col-md-offset-1">
+        <h2>
+            our data
+        </h2>
+        <p>
+            to look at our data click on data on the menu or at this button
+        </p>
+        <a href="{{ url_for('data') }}" class="btn btn-primary btn-lg"> to data page</a>
+    </div>
+</div>
+
+    {% endblock %}
