@@ -1,43 +1,55 @@
 ﻿{% extends "layout.html" %}
 {% block content %}
-    <div dir="rtl">
-        <div class="Jumbotron">
-            <h1> קובץ מידע של כמות האוכלסיייה</h1>
-            <p>
-                הקובץ הינו קובץ csv הנותן את כמות האוכלסייה במדינות של הקובץ על גזי החממה באותם שנים
-            </p>
-        </div>
-   
-        <table class="table table-bordered">
-            <thead>
-                <tr> <th> שם שדה </th>
-             <th> הסבר </th></tr>
-
-            </thead>
-            <tbody>
-    <tr>
-        <td> מיקום</td>
-        <td> על איזה איזור מדובר בשורה</td>
-    </tr>
-                
-                <tr>
-                    <td> שנה</td>
-                    <td> על איזה שנה מדובר בשורה</td>
-                    
-                </tr>
-                <tr>
-                    <td> אוכלוסייה בסך הכול</td>
-                    <td> כמה אוכלסייה היה למדינה בסך הכל-באלפים.</td>
-                </tr>
-
-            </tbody>
-
-        </table>
-       
+<div dir="rtl">
+    <div class="Jumbotron">
+        <h1> קובץ מידע של כמות האוכלסיייה</h1>
+        <p>
+            הקובץ הינו קובץ csv הנותן את כמות האוכלסייה במדינות של הקובץ על גזי החממה באותם שנים
+        </p>
     </div>
 
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th> שם שדה </th>
+                <th> הסבר </th>
+            </tr>
 
-<div  id="table">
+        </thead>
+        <tbody>
+            <tr>
+                <td> מיקום</td>
+                <td> על איזה איזור מדובר בשורה</td>
+            </tr>
+
+            <tr>
+                <td> שנה</td>
+                <td> על איזה שנה מדובר בשורה</td>
+
+            </tr>
+            <tr>
+                <td> אוכלוסייה בסך הכול</td>
+                <td> כמה אוכלסייה היה למדינה בסך הכל-באלפים.</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+<div class="row">
+    <form method="post" class="col-sm-2">
+        {{ form1.csrf_token }}
+        <input class="btn btn-success" type="submit" name="action" value="Expand">
+    </form>
+
+    <form method="post" class="col-sm-2">
+        {{ form2.csrf_token }}
+        <input class="btn btn-danger" type="submit" name="action" value="Collapse">
+    </form>
+</div>
+
+<div id="table">
     {{ datapop | safe}}
 </div>
 {% endblock %}

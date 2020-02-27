@@ -12,3 +12,4 @@ class Raw_Data_pop(object):
         df1.drop(df1.columns[df1.columns.str.contains('unnamed',case = False)],axis = 1, inplace = True)
         raw_data_table_gas = df1.to_html(classes = 'table table-hover')
         return raw_data_table_gas
+    

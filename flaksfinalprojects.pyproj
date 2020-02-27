@@ -27,6 +27,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="flaksfinalprojects\Models\Forms.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="flaksfinalprojects\Models\LocalDatabaseRoutines.py" />
     <Compile Include="flaksfinalprojects\Models\QueryFormStructure.py" />
     <Compile Include="flaksfinalprojects\Models\Raw_Data.py">
