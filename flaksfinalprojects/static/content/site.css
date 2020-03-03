@@ -40,3 +40,17 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+.jumbotron {
+    background-color: forestgreen !important;
+    color: white !important
+}
+
+.my-flex{
+    display:grid !important;
+    grid-template-columns:1fr 1fr 1fr;
+    grid-gap:15px;
+    width:100%;
+}
+.my-flex>div{
+    width:100%;
+}

@@ -1,33 +1,34 @@
 ﻿{% extends "layout.html" %}
 {% block content %}
-<div dir="rtl">
+<div>
     <div class="Jumbotron">
-        <h1> קובץ מידע פליטת גזי חממה</h1>
-        <p> הקובץ הזה הוא קובץ csv אשר מציג את פליטות גזי החממה של חברי מדינות ה OECD מ 1990-2017 הקובץ מציג גם כמה מדינות שאינן חברות בארגון כגון סין</p>
-    </div>
+        <h1>
+            Greenhouse gas emissions data file
+        </h1>
+        <p> This file is a csv file which shows the greenhouse gas emissions of the OECD countries from 1990-2017 The file also shows some non-member countries in an organization such as China    </div>
 
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th> שם שדה </th>
-                <th> הסבר </th>
+                <th> Field </th>
+                <th> Explaination </th>
             </tr>
 
         </thead>
         <tbody>
             <tr>
-                <td> מדינה</td>
-                <td> על איזה מדינה מדובר בשורה</td>
+                <td> country</td>
+                <td> what country is the row about</td>
             </tr>
 
             <tr>
-                <td> שנה</td>
-                <td> על איזה שנה מדובר בשורה</td>
+                <td> year</td>
+                <td> what year is th row about </td>
 
             </tr>
             <tr>
                 <td> ערך</td>
-                <td> בטונות-כמה גזי חממה נפלטו לאותה מדינה באותה שנה</td>
+                <td> how many greenhouse gas was emmited by the country at that year </td>
             </tr>
 
         </tbody>

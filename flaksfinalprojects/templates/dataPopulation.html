@@ -1,35 +1,38 @@
 ﻿{% extends "layout.html" %}
 {% block content %}
-<div dir="rtl">
+<div>
     <div class="Jumbotron">
-        <h1> קובץ מידע של כמות האוכלסיייה</h1>
+        <h1> population data file</h1>
         <p>
-            הקובץ הינו קובץ csv הנותן את כמות האוכלסייה במדינות של הקובץ על גזי החממה באותם שנים
+           = this  file is a csv file that shows population data of the countries in the other file (about the greenhouse gas emittion ) in 1990-2017
         </p>
     </div>
 
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th> שם שדה </th>
-                <th> הסבר </th>
+                <th> Field </th>
+                <th> Explaination </th>
             </tr>
 
         </thead>
         <tbody>
             <tr>
-                <td> מיקום</td>
-                <td> על איזה איזור מדובר בשורה</td>
+                <td>country </td>
+                <td> what country in the row</td>
             </tr>
 
             <tr>
-                <td> שנה</td>
-                <td> על איזה שנה מדובר בשורה</td>
+                <td> year</td>
+                <td> what year in the row</td>
 
             </tr>
             <tr>
-                <td> אוכלוסייה בסך הכול</td>
-                <td> כמה אוכלסייה היה למדינה בסך הכל-באלפים.</td>
+                <td> total population</td>
+                <td>
+                    How many population the state has in  total- in thousands
+                    .
+                </td>
             </tr>
 
         </tbody>

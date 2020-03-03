@@ -1,50 +1,43 @@
 ﻿{% extends "layout.html" %}
 {% block content %}
-    <div dir="rtl">
+    <div>
         <div class="jumbotron">
-      <h1> הסבר קבצי המידע</h1>
-            <h2> הדף הזה נועד כדי להסביר על קבצי המידע שבהם הפרוייקט משתמש</h2>
+      <h1> dataset explation</h1>
+            <h2> this page explains the dataset of the project</h2>
         </div>
  
 <div>
-    <h3>שינוי אקלים היא בעייה שאם לא תטופל מסוגלת לפגוע במין האנושי קשות</h3>
+    <h3>Climate change is a problem that, if left untreated, can seriously harm the human race</h3>
     <p>
-        ערים קרובות לחוף יוצפו ואולי אפילו ישקעו כנגד הים העולה.
-        .נביטות של פירות וירקות ייפגעו מההחום הגדול וייתכן שלא תישאר יותר צמחייה
-        סופות ושרפות שנגרמות מתנאי מזג אוויר קיצוניים יפגעו בבתים ויפצעו או יהרגו אנשים.
+        costal cities will be sunk and destroyed by the rising sea, crops growth will fail becuase extreme weather condition and could cause great famines and great fire and terrible storms could destroy homes and devestate cities 
     </p>
     <p>
-        אז איך אפשר למנוע את שינויי האקלים?
-        שינוי אקלים נגרם בעיקר מפליטת גזי חממה. פחמן דו חמצני, מתאן ועוד 
-        קובץ המידע הראשון שלי אסף מידע של 27 שנה של פליטות גזי חממה ממדינות ה oecd וכמה מדינות אשר אינן בארגון
-        קובץ המידע הזה ייאפשר לבצע השוואות בין מדינות או לראות את שינוי פליטת גזי החממה במהלך השנים .
-        וזה יאפשר לגלות איזה צעדים כדאי למדינות לנקוט כדי למנוע עלייה של פליטת וריכוז גזי חממה בכך שנסתכל על המדינות שפולטות הכי פחות.
+        So what can be done? Climate change is caused by greenhouse gases like CO2 and Methane. Most of our electricty is generated from oil and coal that when burned emit greenhouse gas. this project pourpose is to analyse countries greehouse gas emmition  throught many years so that we could see which countries are the most energy efficent. to that end I used a csv file from the OECD that shows greenhouse gas emmition of OECD countries and some that arn't in the OECD like China. 
     </p>
-    <p> אך זה לבד אינו מספיק. ייתכן שמדינה פולטת מעט גזי חממה מכיון שיש לה אוכלסייה קטנה טלכן אינה צריכה הרבה חשמל
-    קובץ הנתונים השני שלי מראה את כמות האוכלסייה של אותן מדינות באותם שנים של הקובץ הקודם ומאפשר השוואה בין האולכסייה של מדינה לביןן כמות הפליטה שלה
-    וכך הבחינה תהייה יותר מדוייקת
-    </p>
+    
+    <p> 
+But monitoring greenhouse gas emmition alone isn't enough. We have to factor in population and population growth over time. The more population a country have the more greenhouse gas it wil emit. Therfore to look at grennhouse gas emitions correctly we must facor in population. The second file of my datset is a csv file that shows every country population count (mantianed by the UN). i sliced the data so that i would have only the relevent years and countries of my other data file.    </p>
     
 </div>    
     <table class="table table-bordered">
         <thead>
             <tr>
-                <td> שם קובץ </td>
-                <td> הסבר</td>
-                <td> קישור</td>
+                <td> File name </td>
+                <td> Explanation</td>
+                <td> Link to the page</td>
             </tr>
 
         </thead>
         <tbody>
             <tr>
-                <td> פליטת גזי חממה - סטטיסטיקות OECD</td>
-                <td> קובץ מידע של פליטת גזי חממה המסופק בידי ה- OECD</td>
-                <td> <a href="{{ url_for('Greenhousegasdata') }}">קישור לדף מסביר</a></td>
+                <td>greenhouse gas.csv</td>
+                <td> A csv file reporting grennhouse gas emmitions from 1990-2017 of OECD countries and some countries that are not in the OECD like China.</td>
+                <td> <a href="{{ url_for('Greenhousegasdata') }}">Link </a></td>
             </tr>
             <tr>
-                <td> כמות אוכלסייה במדינות </td>
-                <td> כמות האוכלסייה במדינות- מסופק על ידי הא"ום</td>
-                <td> <a href="{{ url_for('populationdata') }}">קישור לדף מסביר</a></td>
+                <td> population_data </td>
+                <td>Amount of population per country  - provided by the UN</td>
+                <td> <a href="{{ url_for('populationdata') }}">Link</a></td>
             </tr>
         </tbody>
     </table>       
