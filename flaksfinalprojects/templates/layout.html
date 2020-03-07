@@ -19,7 +19,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="/" class="navbar-brand">greenData</a>
+                <a href="/" class="navbar-brand">GreenData</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -47,6 +47,12 @@
     <script src="/static/scripts/bootstrap.js"></script>
     <script src="/static/scripts/respond.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.2/bootstrap-slider.js"></script>
+    <script>
+  $(document).ready(function(){
+    $('.carousel').carousel({
+      interval: 4000
+    })
+  }); 
     </script>
     {% block scripts %}{% endblock %}
 
