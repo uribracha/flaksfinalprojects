@@ -2,7 +2,7 @@
 Routes and views for the flask application.
 """
 from flask import flash
-
+from os import path
 import pandas as pd
 import numpy as np
 from datetime import datetime
@@ -16,8 +16,6 @@ from wtforms.validators import DataRequired
 from flaksfinalprojects.Models.QueryFormStructure import QueryFormStructure 
 from flaksfinalprojects.Models.QueryFormStructure import LoginFormStructure 
 from flaksfinalprojects.Models.QueryFormStructure import UserRegistrationFormStructure 
-from flaksfinalprojects.Models.Raw_Data import Raw_Data_pop
-
 from flaksfinalprojects.Models.Forms import ExpandForm
 from flaksfinalprojects.Models.Forms import CollapseForm
 
@@ -64,10 +62,15 @@ def data():
 def Greenhousegasdata():
     form1 = ExpandForm()
     form2 = CollapseForm()
+    df1 = pd.read_csv( path.join(path.dirname(__file__), 'static\\Data\\greenhouse gas.csv'))
+    df1.drop(df1.columns[df1.columns.str.contains('unnamed',case = False)],axis = 1, inplace = True)
+    raw_data_table_gas = df1.to_html(classes = 'table table-hover')
+    
+    
     raw_data_table = ''
     if request.method == 'POST':
         if request.form['action'] == 'Expand' and form1.validate_on_submit():
-            raw_data_table = Raw_Data_pop.get_gas_Raw()
+            raw_data_table = raw_data_table_gas
         if request.form['action'] == 'Collapse' and form2.validate_on_submit():
             raw_data_table = ''
         
@@ -87,12 +90,15 @@ def Greenhousegasdata():
 @app.route('/populationdata',methods = ['GET' , 'POST'])
 
 def populationdata():
+    df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\population_data.csv'))
+    df.drop(df.columns[df.columns.str.contains('unnamed',case = False)],axis = 1, inplace = True)
+    raw_data_table_pop = df.to_html(classes = 'table table-hover')
     form1 = ExpandForm()
     form2 = CollapseForm()
     raw_data_table = ''
     if request.method == 'POST':
         if request.form['action'] == 'Expand' and form1.validate_on_submit():
-            raw_data_table = Raw_Data_pop.get_pop_Raw()
+            raw_data_table = raw_data_table_pop
         if request.form['action'] == 'Collapse' and form2.validate_on_submit():
             raw_data_table = ''
 
