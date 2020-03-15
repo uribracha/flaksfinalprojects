@@ -1,0 +1,38 @@
+﻿{% extends "layout.html" %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1>query the database</h1>
+   <p>in this page you can query the dataset</p>
+</div>
+<form method=post class="jumbotron">
+    {{ form.csrf }}
+    {{ form.csrf_token }}
+    <div class="form group">
+        {{form.first_country.label}}
+        {{form.first_country}}
+    </div>
+    <div class="form group">
+        {{form.second_country.label}}
+        {{form.second_country}}
+    </div>
+    <div class="form group">
+        {{form.whattotest.label}}
+        {{form.whattotest}}
+    </div>
+    <div class="form group">
+        {{form.yearstart.label}}
+        {{form.yearstart}}
+    </div>
+    <div class="form group">
+        {{form.yearEnd.label}}
+        {{form.yearEnd}}
+    </div>
+    <div class="form group">
+
+        {{form.submit}}
+    </div>
+</form>
+    
+
+    {% endblock %}

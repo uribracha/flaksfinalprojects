@@ -27,13 +27,13 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="flaksfinalprojects\Models\dataQueryClass.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="flaksfinalprojects\Models\Forms.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="flaksfinalprojects\Models\LocalDatabaseRoutines.py" />
+    <Compile Include="flaksfinalprojects\Models\Querydataclass.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="flaksfinalprojects\Models\QueryFormStructure.py" />
     <Compile Include="flaksfinalprojects\Models\Raw_Data.py">
       <SubType>Code</SubType>
@@ -61,6 +61,7 @@
     <Content Include="flaksfinalprojects\templates\dataPopulation.html" />
     <Content Include="flaksfinalprojects\templates\login.html" />
     <Content Include="flaksfinalprojects\templates\picturealbum.html" />
+    <Content Include="flaksfinalprojects\templates\QueryData.html" />
     <Content Include="flaksfinalprojects\templates\register.html" />
     <Content Include="requirements.txt" />
     <Content Include="flaksfinalprojects\static\content\bootstrap.css" />

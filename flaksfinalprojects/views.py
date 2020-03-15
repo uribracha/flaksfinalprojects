@@ -18,6 +18,7 @@ from flaksfinalprojects.Models.QueryFormStructure import LoginFormStructure
 from flaksfinalprojects.Models.QueryFormStructure import UserRegistrationFormStructure 
 from flaksfinalprojects.Models.Forms import ExpandForm
 from flaksfinalprojects.Models.Forms import CollapseForm
+from flaksfinalprojects.Models.Querydataclass import Querydataclass
 
 db_Functions = create_LocalDatabaseServiceRoutines() 
 @app.route('/')
@@ -147,7 +148,7 @@ def Login():
     if (request.method == 'POST' and form.validate()):
         if (db_Functions.IsLoginGood(form.username.data, form.password.data)):
             flash('Login approved!')
-            return redirect('/data')
+            return redirect('/query')
         else:
             flash('Error in - Username and/or password')
    
@@ -163,5 +164,15 @@ def picturealbum():
     return render_template(
         "picturealbum.html",
         title="power plant pictures",
+      
+        )
+  app.route('/query', methods=['GET', 'POST'])
+  def query():
+      form=Querydataclass()
+      return render_template(
+        "QueryData.html",
+        title="query the dataset",
+        form=form
+
       
         )
