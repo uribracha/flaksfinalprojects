@@ -166,13 +166,13 @@ def picturealbum():
         title="power plant pictures",
       
         )
-  app.route('/query', methods=['GET', 'POST'])
-  def query():
-      form=Querydataclass()
-      return render_template(
-        "QueryData.html",
-        title="query the dataset",
-        form=form
+@app.route('/query',methods=['GET', 'POST'])
+def query():
+    form=Querydataclass(request.form)
+    return render_template(
+    "QueryData.html",
+    title="query the dataset",
+    form=form
 
       
         )
