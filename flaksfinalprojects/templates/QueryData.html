@@ -5,32 +5,14 @@
     <h1>query the database</h1>
     <p>in this page you can query the dataset</p>
 </div>
-<div>
-
+<div class="form">
+    {{render_form(form)}}
 </div>
-<form>
-    {{ form.csrf }}
-    {{ form.csrf_token }}
-    <div class="form group">
-        
-        {{form.choose_countries.label}}
-        <br />
-        <br />
-        {{form.choose_countries}}
-    </div>
-</form>
+
 <style>
-    }
+    
 
-    input {
-        width: 50%;
-        height: 40px;
-    }
 
-    .jumbotron {
-        width: 50%;
-        background: gray !important;
-        margin: 0;
-    }
+
 </style>
     {% endblock %}
