@@ -1,10 +1,10 @@
 """
 This script runs the flaksfinalprojects application using a development server.
 """
-
+import sys
 from os import environ
 from flaksfinalprojects import app
-
+from flask_bootstrap import Bootstrap
 if __name__ == '__main__':
     HOST = environ.get('SERVER_HOST', 'localhost')
     try:
@@ -13,5 +13,6 @@ if __name__ == '__main__':
         PORT = 5555
 
     app.config['SECRET_KEY'] = 'aaaa'
-
+    bootstrap=Bootstrap(app)
+   
     app.run(HOST, PORT)

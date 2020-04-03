@@ -1,18 +1,38 @@
 ﻿{% extends "layout.html" %}
-
 {% block content %}
 <div class="jumbotron">
     <h1>query the database</h1>
     <p>in this page you can query the dataset</p>
 </div>
 <div class="form">
-    {{render_form(form)}}
+    <form method="post">
+        <div class="form-group">
+            {{form.choose_countries.label}}
+            {{form.choose_countries}}
+        </div>
+        <div class="form-group">
+            {{form.startYear.label}}
+            {{form.startYear}}
+        </div>
+        <div class="form-group">
+            {{form.endYear.label}}
+            {{form.endYear}}
+        </div>
+        <div class="form-group">
+            {{form.mode.label}}
+            {{form.mode}}
+        </div>
+        <div class="form-group">
+            {{form.typeofgraph.label}}
+            {{form.typeofgraph}}
+        </div>
+
+        <div class="form-group">
+            {{form.submit}}
+        </div>
+    </form>
 </div>
 
 <style>
-    
-
-
-
 </style>
     {% endblock %}

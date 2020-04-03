@@ -17,12 +17,12 @@ class Querydataclass(FlaskForm):
     for index,country in enumerate(df["Country"].unique()):
        choose_data.append((index,country))
 
-    choose_countries=SelectMultipleField("choose country",[validators.Required],choices=choose_data)
-    startYear=IntegerField("start year",[validators.Required,validators.number_range(1970,2017)])
-    endYear=IntegerField("end year",[validators.Required,validators.number_range(1970,2017)])
-    mode=SelectField("what do you want to compare",[validators.Required],choices=[(0,"population data only"),(1,"greenhouse data only"),(2,"ratio between greenhouse gas emission and population count "),(3,"ratio between population count and greenhouse gas emission  ")] )
-    typeofgraph=SelectField("select graph type",[validators.Required],choices=[(0,"line"),(1,"bar"), (2,"hist"), (3,"box"), (4,"kde"), (5,"area"), (6,"scatter"), (7,"hexbin"),(8,"pie")])
-    submit = SubmitField('Submit')
+    choose_countries=SelectMultipleField("choose country",[validators.Required],render_kw={"class":"form-control"},choices=choose_data)
+    startYear=IntegerField("start year",[validators.Required,validators.number_range(1970,2017)],render_kw={"class":"form-control"})
+    endYear=IntegerField("end year",[validators.Required,validators.number_range(1970,2017)],render_kw={"class":"form-control"})
+    mode=SelectField("what do you want to compare",[validators.Required],render_kw={"class":"form-control"},choices=[(0,"population data only"),(1,"greenhouse data only"),(2,"ratio between greenhouse gas emission and population count "),(3,"ratio between population count and greenhouse gas emission  ")] )
+    typeofgraph=SelectField("select graph type",[validators.Required],render_kw={"class":"form-control"},choices=[(0,"line"),(1,"bar"), (2,"hist"), (3,"box"), (4,"kde"), (5,"area"), (6,"scatter"), (7,"hexbin"),(8,"pie")])
+    submit = SubmitField('Submit',render_kw={"class":"btn btn-primary"})
 
 
 
