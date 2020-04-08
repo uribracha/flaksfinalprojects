@@ -35,6 +35,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="flaksfinalprojects\Models\QueryFormStructure.py" />
+    <Compile Include="flaksfinalprojects\Models\queryfunctions.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="flaksfinalprojects\Models\Raw_Data.py">
       <SubType>Code</SubType>
     </Compile>

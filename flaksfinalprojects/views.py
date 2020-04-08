@@ -19,6 +19,8 @@ from flaksfinalprojects.Models.QueryFormStructure import UserRegistrationFormStr
 from flaksfinalprojects.Models.Forms import ExpandForm
 from flaksfinalprojects.Models.Forms import CollapseForm
 from flaksfinalprojects.Models.Querydataclass import Querydataclass
+from flaksfinalprojects.Models.queryfunctions import queryfunctions
+import sys
 
 db_Functions = create_LocalDatabaseServiceRoutines() 
 @app.route('/')
@@ -168,11 +170,37 @@ def picturealbum():
         )
 @app.route('/query',methods=['GET', 'POST'])
 def query():
+    chart=''
+    table=''
+    
     form=Querydataclass(request.form)
+    if request.method=="POST":
+        
+        if form.mode.data=="population data only":
+          result=queryfunctions.population_only(queryfunctions,form.choose_countries.data , form.startYear.data , form.endYear.data,form.size.data,form.title.data)
+          table=result["table"]
+          chart=result["chart"]
+        elif form.mode.data=="greenhouse data only":
+          result=queryfunctions.greenhousegasonly(queryfunctions,form.choose_countries.data , form.startYear.data , form.endYear.data,form.size.data,form.title.data)
+          table=result["table"]
+          chart=result["chart"]
+        elif form.mode.data=="ratio between greenhouse gas emission and population count":
+            result=queryfunctions.ratiogastopopulation(queryfunctions,form.choose_countries.data , form.startYear.data , form.endYear.data,form.size.data,form.title.data)
+            table=result["table"]
+            chart=result["chart"]
+        elif form.mode.data=="ratio between population count and greenhouse gas emission":
+            result=queryfunctions.ratiopopulationtogas(queryfunctions,form.choose_countries.data , form.startYear.data , form.endYear.data,form.size.data,form.title.data)
+            table=result["table"]
+            chart=result["chart"]
+          
     return render_template(
     "QueryData.html",
     title="query the dataset",
-    form=form
+    form=form,
+    table=table,
+    chart=chart
+    )
+    
 
       
-        )
+        

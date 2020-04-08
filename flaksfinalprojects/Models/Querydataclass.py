@@ -15,13 +15,14 @@ class Querydataclass(FlaskForm):
     df = pd.read_csv(path.join(app.root_path,"static\\Data\\greenhouse gas.csv"))
     choose_data = []
     for index,country in enumerate(df["Country"].unique()):
-       choose_data.append((index,country))
+       choose_data.append((country,country))
 
     choose_countries=SelectMultipleField("choose country",[validators.Required],render_kw={"class":"form-control"},choices=choose_data)
     startYear=IntegerField("start year",[validators.Required,validators.number_range(1970,2017)],render_kw={"class":"form-control"})
     endYear=IntegerField("end year",[validators.Required,validators.number_range(1970,2017)],render_kw={"class":"form-control"})
-    mode=SelectField("what do you want to compare",[validators.Required],render_kw={"class":"form-control"},choices=[(0,"population data only"),(1,"greenhouse data only"),(2,"ratio between greenhouse gas emission and population count "),(3,"ratio between population count and greenhouse gas emission  ")] )
-    typeofgraph=SelectField("select graph type",[validators.Required],render_kw={"class":"form-control"},choices=[(0,"line"),(1,"bar"), (2,"hist"), (3,"box"), (4,"kde"), (5,"area"), (6,"scatter"), (7,"hexbin"),(8,"pie")])
+    mode=SelectField("what do you want to compare",[validators.Required],render_kw={"class":"form-control"},choices=[("population data only","population data only"),("greenhouse data only","greenhouse data only"),("ratio between greenhouse gas emission and population count","ratio between greenhouse gas emission and population count"),("ratio between population count and greenhouse gas emission","ratio between population count and greenhouse gas emission")])
+    size=IntegerField("size of graph (inch)",[validators.Required],render_kw={"class":"form-control"})
+    title=TextField("graph title",[validators.Required],render_kw={"class":"form-control"})
     submit = SubmitField('Submit',render_kw={"class":"btn btn-primary"})
 
 
