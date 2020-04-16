@@ -11,7 +11,5 @@ if __name__ == '__main__':
     except ValueError:
         PORT = 5555
 
-    app.config['SECRET_KEY'] = 'aaaa'
-    bootstrap=Bootstrap(app)
-   
+    app.config['SECRET_KEY'] = 'aaaa'   
     app.run(HOST, PORT)
