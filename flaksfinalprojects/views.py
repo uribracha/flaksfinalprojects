@@ -13,7 +13,7 @@ from flask import render_template, redirect, request
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
-from flaksfinalprojects.Models.QueryFormStructure import QueryFormStructure 
+
 from flaksfinalprojects.Models.QueryFormStructure import LoginFormStructure 
 from flaksfinalprojects.Models.QueryFormStructure import UserRegistrationFormStructure 
 from flaksfinalprojects.Models.Forms import ExpandForm

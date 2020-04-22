@@ -16,15 +16,6 @@ from wtforms.validators import DataRequired
 
 
 
-## This class have the fields that are part of the Country-Capital demonstration
-## You can see two fields:
-##   the 'name' field - will be used to get the country name
-##   the 'submit' button - the button the user will press to have the 
-##                         form be "posted" (sent to the server for process)
-class QueryFormStructure(FlaskForm):
-    name   = StringField('Country Name:  ' , validators = [DataRequired()])
-    submit = SubmitField('Submit')
-
 
 
 
@@ -72,8 +63,5 @@ class UserRegistrationFormStructure(FlaskForm):
 ##   Please complete this class according to your needs
 ##   the 'submit' button - the button the user will press to have the 
 ##                         form be "posted" (sent to the server for process)
-#class DataParametersFormStructure(FlaskForm):
-#    
-#    submit = SubmitField('Submit')
 
 
