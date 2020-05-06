@@ -9,6 +9,7 @@ def create_LocalDatabaseServiceRoutines():
     return LocalDatabaseServiceRoutines()
 
 class LocalDatabaseServiceRoutines(object):
+    #class variables
     def __init__(self):
         self.name = 'Data base service routines'
         self.index = {}

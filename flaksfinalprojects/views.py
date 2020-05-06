@@ -33,6 +33,7 @@ def home():
     
 
 @app.route('/contact')
+#this is contact page
 def contact():
     """Renders the contact page."""
     return render_template(
@@ -43,6 +44,7 @@ def contact():
     )
 
 @app.route('/about')
+#this is about page
 def about():
     """Renders the about page."""
     return render_template(
@@ -52,6 +54,8 @@ def about():
         message='my application about page'
     )
 @app.route("/data")
+#this is the data page(page of table review)
+
 def data():
     return render_template(
            'Data.html',
@@ -61,7 +65,7 @@ def data():
         )
 @app.route('/Greenhousegasdata',methods = ['GET' , 'POST'])
 
-
+#indivdual page of table review (greenhouse)
 def Greenhousegasdata():
     form1 = ExpandForm()
     form2 = CollapseForm()
@@ -78,7 +82,7 @@ def Greenhousegasdata():
             raw_data_table = ''
         
 
-    """Renders the contact page."""
+    
     return render_template(
         'dataGreenhouse.html',
         title='greenhouse gas data',
@@ -91,10 +95,15 @@ def Greenhousegasdata():
 
 
 @app.route('/populationdata',methods = ['GET' , 'POST'])
-
+#indivdual page of table review (population)
 def populationdata():
+    #reading dataframe
+
     df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\population_data.csv'))
+    #dropping  columns that are not needed
+
     df.drop(df.columns[df.columns.str.contains('unnamed',case = False)],axis = 1, inplace = True)
+    
     raw_data_table_pop = df.to_html(classes = 'table table-hover')
     form1 = ExpandForm()
     form2 = CollapseForm()
@@ -105,7 +114,6 @@ def populationdata():
         if request.form['action'] == 'Collapse' and form2.validate_on_submit():
             raw_data_table = ''
 
-    """Renders the contact page."""
     return render_template(
         'dataPopulation.html',
         title='greenhouse gas data',
@@ -146,8 +154,9 @@ def Register():
 @app.route('/login', methods=['GET', 'POST'])
 def Login():
     form = LoginFormStructure(request.form)
-
+    #checking post and form validition
     if (request.method == 'POST' and form.validate()):
+        #checking if username and password exist (see QueryFormStructure)
         if (db_Functions.IsLoginGood(form.username.data, form.password.data)):
             flash('Login approved!')
             return redirect('/query')
@@ -161,6 +170,7 @@ def Login():
         year=datetime.now().year,
         repository_name='Pandas',
         )
+#picture album
 @app.route("/picturealbum")
 def picturealbum():
     return render_template(
@@ -169,28 +179,46 @@ def picturealbum():
       
         )
 @app.route('/query',methods=['GET', 'POST'])
+#query
 def query():
+    #define starting variable
     chart=''
     table=''
     
     form=Querydataclass(request.form)
+    #checking post
     if request.method=="POST":
-        
+        #finding what function to use see queryfuncations page to see funcation review.
+
         if form.mode.data=="population data only":
+            #calling proper function from queryfunctions
           result=queryfunctions.population_only(queryfunctions,form.choose_countries.data , form.startYear.data , form.endYear.data,form.size.data,form.title.data)
           table=result["table"]
+
           chart=result["chart"]
+
         elif form.mode.data=="greenhouse data only":
+             #calling proper function from queryfunctions
           result=queryfunctions.greenhousegasonly(queryfunctions,form.choose_countries.data , form.startYear.data , form.endYear.data,form.size.data,form.title.data)
+
           table=result["table"]
+
           chart=result["chart"]
+
         elif form.mode.data=="ratio between greenhouse gas emission and population count":
+             #calling proper function from queryfunctions
             result=queryfunctions.ratiogastopopulation(queryfunctions,form.choose_countries.data , form.startYear.data , form.endYear.data,form.size.data,form.title.data)
+            
             table=result["table"]
+
             chart=result["chart"]
+
         elif form.mode.data=="ratio between population count and greenhouse gas emission":
+             #calling proper function from queryfunctions
             result=queryfunctions.ratiopopulationtogas(queryfunctions,form.choose_countries.data , form.startYear.data , form.endYear.data,form.size.data,form.title.data)
+
             table=result["table"]
+
             chart=result["chart"]
           
     return render_template(

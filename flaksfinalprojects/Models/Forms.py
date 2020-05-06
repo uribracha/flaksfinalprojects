@@ -11,12 +11,12 @@ from wtforms.validators import InputRequired
 
 
 
-
+#expend button for form
 class ExpandForm(FlaskForm):
     submit1 = SubmitField('Expand')
     name="Expand" 
     value="Expand"
-
+#collapse button for form
 class CollapseForm(FlaskForm):
     submit2 = SubmitField('Collapse')
     name="Collapse" 

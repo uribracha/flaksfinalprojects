@@ -28,6 +28,7 @@ from wtforms.validators import DataRequired
 ##   the 'submit' button - the button the user will press to have the 
 ##                         form be "posted" (sent to the server for process)
 class LoginFormStructure(FlaskForm):
+   
     username   = StringField('User name:  ' , validators = [DataRequired()])
     password   = PasswordField('Pass word:  ' , validators = [DataRequired()])
     submit = SubmitField('Submit')
