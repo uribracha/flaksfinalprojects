@@ -1,6 +1,7 @@
 """
 This script runs the flaksfinalprojects application using a development server.
 """
+#init the program
 import sys
 from os import environ
 from flaksfinalprojects import app

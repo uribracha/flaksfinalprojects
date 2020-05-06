@@ -47,7 +47,7 @@ class queryfunctions(object):
 
         
         df_final=pd.DataFrame(gas_df[(gas_df["Year"]>=startYear) & (gas_df["Year"]<=endYear) & (gas_df["Country"].isin(countries))])
-
+        #putting the html table in dictonary
         r["table"]=df_final.to_html(classes="table table-hover")
 
         fig, ax = plt.subplots()

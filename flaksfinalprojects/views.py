@@ -1,3 +1,6 @@
+#uri bracha
+#school flask project
+
 """
 Routes and views for the flask application.
 """
@@ -23,8 +26,8 @@ from flaksfinalprojects.Models.queryfunctions import queryfunctions
 import sys
 
 db_Functions = create_LocalDatabaseServiceRoutines() 
+#home page
 @app.route('/')
-@app.route('/home')
 def home():
     return render_template(
         "index.html"
@@ -65,20 +68,30 @@ def data():
         )
 @app.route('/Greenhousegasdata',methods = ['GET' , 'POST'])
 
-#indivdual page of table review (greenhouse)
+#indivdual page of table review (greenhouse) see population page for explanition
 def Greenhousegasdata():
+
     form1 = ExpandForm()
+
     form2 = CollapseForm()
+
     df1 = pd.read_csv( path.join(path.dirname(__file__), 'static\\Data\\greenhouse gas.csv'))
+
     df1.drop(df1.columns[df1.columns.str.contains('unnamed',case = False)],axis = 1, inplace = True)
+
     raw_data_table_gas = df1.to_html(classes = 'table table-hover')
     
     
     raw_data_table = ''
+
     if request.method == 'POST':
+
         if request.form['action'] == 'Expand' and form1.validate_on_submit():
+
             raw_data_table = raw_data_table_gas
+
         if request.form['action'] == 'Collapse' and form2.validate_on_submit():
+
             raw_data_table = ''
         
 
@@ -103,17 +116,24 @@ def populationdata():
     #dropping  columns that are not needed
 
     df.drop(df.columns[df.columns.str.contains('unnamed',case = False)],axis = 1, inplace = True)
-    
+    #converting to html
     raw_data_table_pop = df.to_html(classes = 'table table-hover')
+    #expend and collapse
+
     form1 = ExpandForm()
+
     form2 = CollapseForm()
+
     raw_data_table = ''
+    #expending and collapsing programing.
     if request.method == 'POST':
         if request.form['action'] == 'Expand' and form1.validate_on_submit():
+            #expending (gettint the data)
             raw_data_table = raw_data_table_pop
         if request.form['action'] == 'Collapse' and form2.validate_on_submit():
+            #collapsing (reseting data)
             raw_data_table = ''
-
+            #rendering
     return render_template(
         'dataPopulation.html',
         title='greenhouse gas data',
@@ -124,12 +144,16 @@ def populationdata():
         form2=form2
      
     ) 
+#register
 @app.route('/register', methods=['GET', 'POST'])
 def Register():
+    #get form
     form = UserRegistrationFormStructure(request.form)
-
+    #check if request is  post and validate form
     if (request.method == 'POST' and form.validate()):
+        #check  user doesn't exist
         if (not db_Functions.IsUserExist(form.username.data)):
+            # if user doesn't exist  add user
             db_Functions.AddNewUser(form)
             db_table = ""
 
@@ -156,11 +180,17 @@ def Login():
     form = LoginFormStructure(request.form)
     #checking post and form validition
     if (request.method == 'POST' and form.validate()):
+
         #checking if username and password exist (see QueryFormStructure)
+
         if (db_Functions.IsLoginGood(form.username.data, form.password.data)):
+
             flash('Login approved!')
+            # if login is good: redirect to query
+
             return redirect('/query')
         else:
+
             flash('Error in - Username and/or password')
    
     return render_template(
@@ -188,7 +218,7 @@ def query():
     form=Querydataclass(request.form)
     #checking post
     if request.method=="POST":
-        #finding what function to use see queryfuncations page to see funcation review.
+        #finding what function to use see queryfuncations page to see function review.
 
         if form.mode.data=="population data only":
             #calling proper function from queryfunctions
@@ -216,7 +246,7 @@ def query():
         elif form.mode.data=="ratio between population count and greenhouse gas emission":
              #calling proper function from queryfunctions
             result=queryfunctions.ratiopopulationtogas(queryfunctions,form.choose_countries.data , form.startYear.data , form.endYear.data,form.size.data,form.title.data)
-
+            #table and chart paramater from result
             table=result["table"]
 
             chart=result["chart"]
