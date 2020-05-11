@@ -6,42 +6,64 @@
 </div>
 <div class="form">
     <form method="post">
+        {{ form.csrf_token() }}
         <div class="form-group">
             {{form.choose_countries.label}}
             {{form.choose_countries}}
+            {% for error in form.choose_countries.errors %}
+            <div class="text-danger"> {{error}}</div>
+            {% endfor %}
         </div>
         <div class="form-group">
             {{form.startYear.label}}
             {{form.startYear}}
+            {% for error in form.startYear.errors %}
+            <div class="text-danger"> {{error}}</div>
+            {% endfor %}
         </div>
-        <div class="form-group">
-            {{form.endYear.label}}
-            {{form.endYear}}
-        </div>
-        <div class="form-group">
-            {{form.mode.label}}
-            {{form.mode}}
-        </div>
-        <div class="form-group">
-            {{form.size.label}}
-            {{form.size}}
-        </div>
-        <div class="form-group">
-            {{form.title.label}}
-            {{form.title}}
-        </div>
+<div class="form-group">
+    {{form.endYear.label}}
+    {{form.endYear}}
+    {% for error in form.endYear.errors %}
+    <div class="text-danger"> {{error}}</div>
+    {% endfor %}
+</div>
+<div class="form-group">
+    {{form.mode.label}}
+    {{form.mode}}
+    {% for error in form.mode.errors %}
 
-        <div class="form-group">
-            {{form.submit}}
-        </div>
+
+    <div class="text-danger"> {{error}}</div>
+    {% endfor %}
+</div>
+<div class="form-group">
+    {{form.size.label}}
+    {{form.size}}
+    {% for error in form.size.errors %}
+
+
+    <div class="text-danger"> {{error}}</div>
+    {% endfor %}
+</div>
+<div class="form-group">
+    {{form.title.label}}
+    {{form.title}}
+    {% for error in form.title.errors %}
+
+
+    <div> {{error}}</div>
+    {% endfor %}
+
+</div>
+
+    <div class="form-group">
+        {{form.submit}}
+    </div>
     </form>
-   
 </div>
 <div class="result">
     {{table  | safe}}
     <img src="{{chart}}"  alt=""/>
 </div>
-
-<style>
-</style>
     {% endblock %}

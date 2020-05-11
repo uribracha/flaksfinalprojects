@@ -6,7 +6,7 @@ from matplotlib.figure import Figure
 import base64
 from os import path
 import io
-import sys
+
 from flaksfinalprojects import app
 
 class queryfunctions(object):

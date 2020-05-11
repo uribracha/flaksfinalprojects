@@ -16,7 +16,7 @@ from flask import render_template, redirect, request
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
-
+import sys
 from flaksfinalprojects.Models.QueryFormStructure import LoginFormStructure 
 from flaksfinalprojects.Models.QueryFormStructure import UserRegistrationFormStructure 
 from flaksfinalprojects.Models.Forms import ExpandForm
@@ -214,10 +214,10 @@ def query():
     #define starting variable
     chart=''
     table=''
-    
     form=Querydataclass(request.form)
-    #checking post
-    if request.method=="POST":
+    #checking post and validate
+    if request.method=="POST" and form.validate():
+      
         #finding what function to use see queryfuncations page to see function review.
 
         if form.mode.data=="population data only":
