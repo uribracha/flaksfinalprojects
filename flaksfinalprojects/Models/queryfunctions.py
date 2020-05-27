@@ -16,26 +16,22 @@ class queryfunctions(object):
     def population_only(self,countries,startYear,endYear,size,title):
        r={} # this dictonary hold the data returned to the view
        pop_df =pd.DataFrame( pd.read_csv(path.join(app.root_path,"static\\Data\\population_data.csv"),index_col=0)) # loading the dataframe
-       
        df_final=pd.DataFrame(pop_df[(pop_df["Year"]>=startYear) & (pop_df["Year"]<=endYear) & (pop_df["Country"].isin(countries))]) 
-
        r["table"]=df_final.to_html(classes="table table-hover") 
        
        fig, ax = plt.subplots() # setting up the figure for the plot
+       # groupby and chart building (costumizable fig size multipule plot in same fig )
        for name,country in df_final.groupby("Country"):
-            fig.suptitle(title, fontsize=16)
+           fig.suptitle(title, fontsize=16)
+           plt.ylabel("population count (Thousands)")
+           country.plot(x="Year",figsize=(size, size),y="PopTotal",ax=ax, label=name)
+             
+          
+       r["chart"]=self. plot_to_img(fig)   #save figure to img
+       return r
 
-            plt.ylabel("population count (Thousands)")
-
-            plot= country.plot(x="Year",figsize=(size, size),y="PopTotal",ax=ax, label=name)
-
-            # groupby and chart building (costumizable fig size multipule plot in same fig )
-            
-            r["chart"]=self. plot_to_img(fig)   #save figure to img
-            return r
-
-    #greenhouse data only built the same way see  
-
+           
+#greenhouse data only built the same way see 
     def greenhousegasonly(self,countries,startYear,endYear,size,title):
         #dict
         r={}
